@@ -78,9 +78,11 @@ export default function RouteSelection({
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="font-medium text-foreground">
-                          {isSafest ? 'Safest route' : 'Fastest route'}
+                          {routes.length === 1
+                            ? 'Fastest & Safest route'
+                            : (isSafest ? 'Safest route' : 'Fastest route')}
                         </span>
-                        {isSafest && (
+                        {(routes.length === 1 || (isSafest && routes.length > 1)) && (
                           <span className="text-xs bg-green-500/20 text-green-600 px-2 py-0.5 rounded-full">
                             Recommended
                           </span>

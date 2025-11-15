@@ -150,7 +150,7 @@ export default function NavigationMode({
           exit={{ y: 100 }}
           className="fixed bottom-0 mx-2 rounded-t-2xl left-0 right-0 z-40 bg-background border-t border-border shadow-2xl"
         >
-          <div className="p-4">
+          <div className="p-4 pb-8">
             <div className="flex items-center justify-between">
               {/* Stats on the left */}
               <div className="flex-1">
@@ -181,7 +181,7 @@ export default function NavigationMode({
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           exit={{ scale: 0 }}
-          className="fixed bottom-28 left-4 z-40"
+          className="fixed bottom-32 left-4 z-40"
         >
           <Button
             onClick={onRecenter}
@@ -199,7 +199,7 @@ export default function NavigationMode({
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="fixed bottom-28 right-4 z-40"
+          className="fixed bottom-32 right-4 z-40"
         >
           <Button onClick={onReport} variant={'outline'} className="backdrop-blur-2xl rounded-full">
             Report a Danger

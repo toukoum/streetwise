@@ -242,17 +242,49 @@ export function useMapNavigation(map: React.MutableRefObject<mapboxgl.Map | null
         destinationPopup.current.remove()
       }
 
-      const calculatedRoutes = await calculateRoutes(currentUserLocation, destination)
+      // Import toast for notifications
+      const { toast } = await import('sonner')
+
+      // Show loading toast
+      const toastId = toast.loading('Calculating routes...', {
+        description: 'Finding the safest path for you'
+      })
+
+      // Update toast with progress
+      const onProgress = (message: string) => {
+        toast.loading(message, {
+          id: toastId,
+          description: 'Please wait...'
+        })
+      }
+
+      const calculatedRoutes = await calculateRoutes(currentUserLocation, destination, onProgress)
 
       if (calculatedRoutes.length > 0) {
+        // Update toast based on results
+        if (calculatedRoutes.length > 1) {
+          toast.success('Routes calculated!', {
+            id: toastId,
+            description: `Found route options`
+          })
+        } else {
+          toast.success('Route calculated!', {
+            id: toastId,
+            description: 'Found the fastest & safest route for you'
+          })
+        }
+
         setRoutes(calculatedRoutes)
         setSelectedRouteIndex(calculatedRoutes.length > 1 ? 1 : 0)
         displayRoutes(calculatedRoutes, calculatedRoutes.length > 1 ? 1 : 0)
         setNavigationState('route-selection')
       } else {
         console.error('No routes found')
+        toast.error('No route found', {
+          id: toastId,
+          description: 'Please try a different destination'
+        })
         setNavigationState('idle')
-        alert('Could not find a route. Please try again.')
       }
     },
     [destinationCoords, getUserLocation]

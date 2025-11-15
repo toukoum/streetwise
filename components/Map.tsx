@@ -258,7 +258,7 @@ function MapComponent({ className = '' }: MapProps) {
             showRecenter={showRecenter}
           />
           {/* Community data toggle in navigation mode */}
-          <div className="absolute top-32 right-4 z-10">
+          <div className="absolute top-40 right-4 z-10">
             <CommunityDataToggle
               showCommunityData={showCommunityData}
               onToggle={setShowCommunityData}
@@ -288,22 +288,22 @@ function MapComponent({ className = '' }: MapProps) {
             </h1>
           </div>
 
-          {/* Floating location button */}
-          <button
-            onClick={getUserLocation}
-            className="absolute top-6 right-4 z-10 bg-card rounded-full p-3 shadow-md hover:shadow-lg transition-shadow border border-border"
-            aria-label="My location"
-          >
-            <Navigation className="h-5 w-5 text-foreground" />
-          </button>
-
           {/* Community data toggle */}
-          <div className="absolute top-20 right-4 z-10">
+          <div className="absolute top-6 right-4 z-10">
             <CommunityDataToggle
               showCommunityData={showCommunityData}
               onToggle={setShowCommunityData}
             />
           </div>
+
+          {/* Floating location button */}
+          <button
+            onClick={getUserLocation}
+            className="absolute top-20 right-4 z-10 bg-card rounded-full p-3 shadow-md hover:shadow-lg transition-shadow border border-border"
+            aria-label="My location"
+          >
+            <Navigation className="h-5 w-5 text-foreground" />
+          </button>
 
           {/* Bottom controls */}
           <div className="fixed bottom-0 left-0 right-0 z-30 pointer-events-none">
@@ -327,7 +327,7 @@ function MapComponent({ className = '' }: MapProps) {
                   onClick={() => setReportOpen(true)}
                   className="w-full h-14 font-semibold text-base rounded-xl shadow-2xl flex items-center justify-center gap-2"
                 >
-                  <AlertTriangle className="h-5 w-5" />
+                  {/*<AlertTriangle className="h-5 w-5" />*/}
                   Report a danger
                 </Button>
               </div>

@@ -8,11 +8,13 @@ interface CommunityDataToggleProps {
   onToggle: (value: boolean) => void
 }
 
-export default function CommunityDataToggle({ showCommunityData, onToggle }: CommunityDataToggleProps) {
+export default function CommunityDataToggle({
+  showCommunityData,
+  onToggle,
+}: CommunityDataToggleProps) {
   return (
     <div className="bg-card/95 backdrop-blur-sm rounded-full shadow-md border border-border px-4 py-2">
       <div className="flex items-center space-x-2.5">
-        <Users className="h-4 w-4 text-muted-foreground" />
         <span className="text-sm font-medium">Reports</span>
         <Switch
           id="community-data"
